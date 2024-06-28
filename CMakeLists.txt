@@ -59,8 +59,25 @@ set(pkg_conf_file "urdfdom_headers.pc")
 configure_file("${CMAKE_CURRENT_SOURCE_DIR}/cmake/pkgconfig/${pkg_conf_file}.in" "${CMAKE_BINARY_DIR}/${pkg_conf_file}" @ONLY)
 install(FILES "${CMAKE_BINARY_DIR}/${pkg_conf_file}" DESTINATION ${CMAKE_INSTALL_LIBDIR}/pkgconfig/ COMPONENT pkgconfig)
 
-add_library(${PROJECT_NAME} INTERFACE)
+add_library(${PROJECT_NAME} INTERFACE
+  include/urdf_exception/exception.h
+  include/urdf_model/color.h
+  include/urdf_model/joint.h
+  include/urdf_model/link.h
+  include/urdf_model/model.h
+  include/urdf_model/pose.h
+  include/urdf_model/twist.h
+  include/urdf_model/types.h
+  include/urdf_model/utils.h
+  include/urdf_model_state/model_state.h
+  include/urdf_model_state/twist.h
+  include/urdf_model_state/types.h
+  include/urdf_sensor/sensor.h
+  include/urdf_sensor/types.h
+  include/urdf_world/types.h
+  include/urdf_world/world.h)
 target_include_directories(${PROJECT_NAME} INTERFACE
+  "$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>"
   "$<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>")
 install(TARGETS ${PROJECT_NAME} EXPORT ${PROJECT_NAME})
 install(
