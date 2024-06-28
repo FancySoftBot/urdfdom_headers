@@ -90,6 +90,6 @@ install(
 # Add uninstall target
 # Ref: http://www.cmake.org/Wiki/CMake_FAQ#Can_I_do_.22make_uninstall.22_with_CMake.3F
 configure_file("${PROJECT_SOURCE_DIR}/cmake/uninstall.cmake.in" "${PROJECT_BINARY_DIR}/uninstall.cmake" IMMEDIATE @ONLY)
-add_custom_target(uninstall "${CMAKE_COMMAND}" -P "${PROJECT_BINARY_DIR}/uninstall.cmake")
+add_custom_target(${PROJECT_NAME}_uninstall "${CMAKE_COMMAND}" -P "${PROJECT_BINARY_DIR}/uninstall.cmake")
 
 message(STATUS "Configuration successful. Type make install to install urdfdom_headers.")
